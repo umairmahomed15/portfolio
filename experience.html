@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience – Umair Mahomed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Animated gradient background */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e0e0e0;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Particles container */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        :root {
+            --bg-primary: transparent;
+            --bg-secondary: rgba(30, 30, 30, 0.7);
+            --bg-glass: rgba(20, 20, 30, 0.7);
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --accent: #4a9eff;
+            --accent-gradient: linear-gradient(135deg, #4a9eff, #6c63ff);
+            --card-bg: rgba(30, 30, 40, 0.6);
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1300px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(14px);
+            border-radius: 70px;
+            padding: 0.9rem 2rem;
+            box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-light);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #4a9eff;
+            margin: 3px 0;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            position: relative;
+            padding: 0.4rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 6px;
+            transition: width 0.25s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #4a9eff;
+        }
+
+        /* Tablet and mobile hamburger - up to 1000px */
+        @media (max-width: 1000px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(20, 20, 30, 0.95);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2.5rem;
+                transition: right 0.35s ease;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+                border-radius: 40px 0 0 40px;
+                padding: 2rem;
+                border-left: 1px solid var(--border-light);
+            }
+
+            .nav-links.open {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Tablet specific fixes */
+        @media (min-width: 768px) and (max-width: 1000px) {
+            section {
+                padding: 100px 0 40px !important;
+            }
+
+            .container {
+                padding: 0 25px !important;
+            }
+
+            h1,
+            .section-title {
+                font-size: 3.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .skill-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 15px !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                padding: 0.8rem 1.2rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                width: 250px;
+                gap: 2rem;
+            }
+
+            .skills-container {
+                padding: 1.2rem !important;
+                width: 100% !important;
+                overflow: hidden !important;
+            }
+
+            .skill-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+
+            .skill-item {
+                padding: 0.8rem 0.3rem !important;
+                font-size: 0.85rem !important;
+                width: 100% !important;
+                margin: 0 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                justify-content: center !important;
+            }
+
+            .skill-item i {
+                font-size: 1.1rem !important;
+                margin-right: 4px !important;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .exp-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 130px 0 60px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-animate {
+            animation: pageEnter 0.7s ease-out;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes pageEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1,
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .section-title span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        .skills-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .skill-item {
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 40px;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4a9eff;
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        .skill-item i {
+            font-size: 1.3rem;
+            color: #4a9eff;
+            flex-shrink: 0;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            background: #4a9eff;
+            color: #fff;
+        }
+
+        .skill-item:hover i {
+            color: #fff;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px 0;
+            color: #888;
+            border-top: 1px solid var(--border-light);
+            width: 100%;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 380px) {
+            .skill-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .skill-item {
+                justify-content: center;
+                padding: 0.9rem 0.5rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Particles canvas -->
+    <canvas id="particles"></canvas>
+
+    <nav class="navbar">
+        <div class="logo">UM</div>
+        <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="work.html">Work</a>
+            <a href="experience.html" class="active">Experience</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="exp-section">
+        <div class="container page-animate">
+            <h1 class="section-title">My Toolkit</h1>
+
+            <p class="intro-text">
+                Essential languages I use daily to build websites
+            </p>
+
+            <div class="skills-container">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <span
+                        style="background: rgba(42, 42, 42, 0.8); backdrop-filter: blur(5px); padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 600; color: #4a9eff; border: 1px solid var(--border-light); font-size: 0.9rem; display: inline-block;">
+                        <i class="fas fa-code"></i> Core technologies
+                    </span>
+                </div>
+
+                <div class="skill-grid">
+                    <div class="skill-item"><i class="fab fa-html5"></i> HTML5</div>
+                    <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                    <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="skill-item"><i class="fab fa-php"></i> PHP</div>
+                    <div class="skill-item"><i class="fab fa-node"></i> Node.js</div>
+                    <div class="skill-item"><i class="fas fa-database"></i> MySQL</div>
+                    <div class="skill-item"><i class="fas fa-database"></i> MongoDB</div>
+                    <div class="skill-item"><i class="fab fa-git-alt"></i> Git</div>
+                    <div class="skill-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+                    <div class="skill-item"><i class="fas fa-mobile-alt"></i> Responsive</div>
+                    <div class="skill-item"><i class="fas fa-server"></i> REST APIs</div>
+                    <div class="skill-item"><i class="fab fa-github"></i> GitHub</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Umair Mahomed – Full Stack Web Developer</p>
+    </footer>
+
+    <script>
+        (function () {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('open');
+                    const spans = hamburger.querySelectorAll('span');
+                    if (navLinks.classList.contains('open')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('open');
+                        const spans = hamburger.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    });
+                });
+            }
+
+            // ===== PARTICLES ANIMATION =====
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 3 + 1;
+                    this.speedX = Math.random() * 0.5 - 0.25;
+                    this.speedY = Math.random() * 0.5 - 0.25;
+                    this.color = `rgba(74, 158, 255, ${Math.random() * 0.3})`;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                }
+
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles = [];
+                for (let i = 0; i < 100; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let particle of particles) {
+                    particle.update();
+                    particle.draw();
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            initParticles();
+            animateParticles();
+        })();
+    </script>
+</body>
+
+</html>
